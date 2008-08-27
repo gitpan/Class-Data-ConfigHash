@@ -1,10 +1,10 @@
-# $Id: /mirror/coderepos/lang/perl/Class-Data-ConfigHash/trunk/lib/Class/Data/ConfigHash.pm 50290 2008-04-13T08:40:28.485797Z daisuke  $
+# $Id: /mirror/coderepos/lang/perl/Class-Data-ConfigHash/trunk/lib/Class/Data/ConfigHash.pm 69719 2008-08-27T02:20:26.319462Z daisuke  $
 
 package Class::Data::ConfigHash;
 use strict;
 use warnings;
 use base qw(Class::Data::Inheritable);
-our $VERSION = '0.00001';
+our $VERSION = '0.00002';
 
 __PACKAGE__->mk_classdata(_config => {});
 
@@ -65,7 +65,7 @@ sub __merge_hashes
           'HASH';
         if ( $right_ref and $left_ref ) {
             $merged{$key} =
-              merge_hashes( $lefthash->{$key}, $righthash->{$key} );
+              __merge_hashes( $lefthash->{$key}, $righthash->{$key} );
         }
         else {
             $merged{$key} = $righthash->{$key};
